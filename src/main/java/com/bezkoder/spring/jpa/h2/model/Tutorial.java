@@ -19,6 +19,16 @@ public class Tutorial {
 	@Column(name = "published")
 	private boolean published;
 
+	public Long getVersion() {
+		return version;
+	}
+
+	public void setVersion(Long version) {
+		this.version = version;
+	}
+
+	@Version
+	protected Long version;
 	public Tutorial() {
 
 	}
