@@ -23,8 +23,14 @@ public class SpringBootJpaH2Application {
         SpringApplication.run(SpringBootJpaH2Application.class, args);
     }
 
+    /**
+     * This Test Case tries to check whether an Optimistic lock exception is thrown or not during dirty read of shared resource
+     * Ref1 is read before
+     * Ref2 has dirty read , gets exception if Ref2 updates shared resource with obsolete read reference
+     * This is possible with @Version annotation on Tutorial.java
+     */
     @PostConstruct
-    void test() {
+    void testIFOptimisticLockExceptionThrownInCaseOfDirtyRead() {
         Tutorial tutorial = new Tutorial();
         Tutorial orig = save(tutorial);
         System.out.println("orig ver " + orig.getVersion());
